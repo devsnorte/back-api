@@ -8,11 +8,13 @@ const bluebird = require('bluebird')
 const config = require('./config')
 const routes = require('./routes')
 
+const cors = require('cors')
+
 const app = express()
 
 // mongoose.Promise = bluebird
 // mongoose.connect(config.mongo.url)
-
+app.use(cors())
 app.use(helmet())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
