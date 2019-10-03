@@ -8,8 +8,14 @@
     "start": "node index.js"
   },
   "engines": {
-    "node": ">=6"
+    "node": "10.x"
   },
+  "builds": [
+    {
+      "src": "*.js",
+      "use": "@now/node"
+    }
+  ],
   "author": "vuejs-norte <>",
   "dependencies": {
     "axios": "^0.18.0",
