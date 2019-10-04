@@ -11,12 +11,14 @@ router
     .get('/meetup', meetupRouter)
     .get('/members', async (req, res) => {
         try {
-            const { data } = await axios.get(MEMBROS)
-            console.log(data.length)
+            const page = (!!req.query.page) ? req.query.page : 1
+            const offset = (!!req.query.offset) ? req.query.offset : 0
+            const { data } = await axios.get(`${MEMBROS}&page=${page}&offset=${offset}`)
             res.json(data)
         } catch (e) {
             res.json({ message: 'Error on API Access - Try again.' })
         }
     })
+
 
 module.exports = router
